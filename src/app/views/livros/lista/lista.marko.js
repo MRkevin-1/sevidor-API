@@ -22,7 +22,7 @@ function render(input, out, __component, component, state) {
 
   component_globals_tag({}, out);
 
-  out.w("<h1> livros </h1><table id=\"livros\"><tr><td>ID</td><td>titulo</td><td>Preço</td><td>Editar</td><td>remove</td></tr>");
+  out.w("<h1> livros </h1><table id=\"livro\"><tr><td>ID</td><td>titulo</td><td>Preço</td><td>Editar</td><td>remove</td></tr>");
 
   var for__14 = 0;
 
@@ -37,12 +37,14 @@ function render(input, out, __component, component, state) {
       marko_escapeXml(livro.titulo) +
       "</td><td>" +
       marko_escapeXml(livro.preco) +
-      "</td><td><a href=\"#\">Editar</a></td><td><a href=\"#\" data-ref=\"" +
+      "</td><td><a href=\"/livros/form/" +
+      marko_escapeXmlAttr(livro.id) +
+      "\">Editar</a></td><td><a href=\"#\" data-ref=\"" +
       marko_escapeXmlAttr(livro.id) +
       "\" data-type=\"remocao\">Remover</a></td></tr>");
   });
 
-  out.w("</table><script src=\"/estatico/js/remove_livros.js\">\r\n    </script> ");
+  out.w("</table><script src=\"/estatico/js/remove_livros.js\">\r\n        </script> ");
 
   init_components_tag({}, out);
 

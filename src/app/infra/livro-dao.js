@@ -13,7 +13,7 @@ class LivroDao{
                     preco,
                     descricao
                 ) values (?,?,?)`,
-                [
+                [,
                     livro.titulo,
                     livro.preco,
                     livro.descricao
@@ -46,7 +46,7 @@ class LivroDao{
         console.log('busca')
         return new Promise((resolve, reject) => {
             this._db.get(
-                `SELECT * FROM livros where id = ? `,
+                `SELECT * FROM livros WHERE id = ? `,
                 [
                     id
                 ],
@@ -60,11 +60,11 @@ class LivroDao{
         });
     }
     
-    remover(id){
+    remove(id){
         console.log('remov')
         return new Promise((resolve,reject) => {
             this._db.run(
-                `DELETE * FROM livros WHERE id = ?`,
+                `DELETE FROM livros WHERE id = ?;`,
                 [
                     id
                 ],
@@ -72,7 +72,7 @@ class LivroDao{
                     if(erro){
                         return reject('erro ao deletar');
                     }
-                    return resolve('deletado com sucesso');
+                    resolve('deletado com sucesso');
                 }
             )
         });
